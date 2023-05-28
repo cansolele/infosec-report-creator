@@ -8,6 +8,7 @@ import { CssBaseline } from "@mui/material";
 import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import MakeExploitsList from "./components/MainPage/MakeExploitsList";
+import MakeTable from "./components/MainPage/MakeTable";
 
 const App = () => {
   const [mode, setMode] = useState(localStorage.getItem("mode") || "dark");
@@ -22,6 +23,7 @@ const App = () => {
         <Header mode={mode} setMode={setMode} />
         <MakeCveList />
         <MakeExploitsList />
+        <MakeTable />
         <Footer />
       </Box>
     </ThemeProvider>

@@ -4,6 +4,7 @@ import subprocess
 import os
 from cve_list import cve_list_routes
 from exploits_list import exploits_list_routes
+from exploits_table import exploits_table_routes
 
 app = Flask(__name__)
 flask_cors(app)
@@ -11,9 +12,11 @@ flask_cors(app)
 os.makedirs(os.path.join(os.path.dirname(__file__), "uploads"), exist_ok=True)
 os.makedirs(os.path.join(os.path.dirname(__file__), "output", "cve_list"), exist_ok=True)
 os.makedirs(os.path.join(os.path.dirname(__file__), "output", "exploits_list"), exist_ok=True)
+os.makedirs(os.path.join(os.path.dirname(__file__), "output", "exploits_table"), exist_ok=True)
 
 app.register_blueprint(cve_list_routes)
 app.register_blueprint(exploits_list_routes)
+app.register_blueprint(exploits_table_routes)
 
 @app.route("/download/<filename>", methods=["GET"])
 def download_file(filename):
@@ -23,6 +26,8 @@ def download_file(filename):
         output_file = os.path.join(output_dir, "cve_list", "CveList.txt")
     elif filename == "ExploitsList":
         output_file = os.path.join(output_dir, "exploits_list", "ExploitsList.txt")
+    elif filename == "ExploitsTable":
+        output_file = os.path.join(output_dir, "exploits_table", "ExploitsTable.xlsx")
     else:
         return "Invalid filename", 400
 
