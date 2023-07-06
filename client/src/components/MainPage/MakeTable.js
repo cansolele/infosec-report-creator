@@ -42,9 +42,9 @@ const MakeTable = () => {
     <Box className={style.main_page}>
       <h1>Сделать таблицу:</h1>
       <form onSubmit={handleSubmit}>
-        <input type="file" accept=".pdf" onChange={handleFileChange} />
+        <input type="file" accept=".xml" onChange={handleFileChange} />
         <button type="submit" disabled={!file || isLoading}>
-          {isLoading ? "Processing..." : "Process PDF"}
+          {isLoading ? "Processing..." : "Process xml"}
         </button>
       </form>
       {downloadLink && <a href={downloadLink}>Download Result</a>}
